@@ -23,9 +23,9 @@ public class UsuarioTest {
         Usuario usuario = new UsuarioTestDataBuilder().conFechaCreacion(fechaCreacion).conId(1L).build();
         //assert
         assertEquals(1, usuario.getId());
-        assertEquals("1234", usuario.getNombre());
-        assertEquals("1234", usuario.getClave());
-        assertEquals(fechaCreacion, usuario.getFechaCreacion());
+        assertEquals("1234", usuario.getNombres());
+        assertEquals("1234", usuario.getDocumento());
+        assertEquals(fechaCreacion, usuario.getFechaNacimiento());
     }
 
     @Test

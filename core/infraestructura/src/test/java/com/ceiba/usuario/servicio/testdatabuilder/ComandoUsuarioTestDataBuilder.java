@@ -2,28 +2,37 @@ package com.ceiba.usuario.servicio.testdatabuilder;
 
 import com.ceiba.usuario.comando.ComandoUsuario;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.UUID;
 
 public class ComandoUsuarioTestDataBuilder {
 
     private Long id;
-    private String nombre;
-    private String clave;
-    private LocalDateTime fecha;
+    private String documento;
+    private String nombres;
+    private String apellidos;
+    private String celular;
+    private String email;
+    private LocalDate fechaNacimiento;
+    private String password;
 
     public ComandoUsuarioTestDataBuilder() {
-        nombre = UUID.randomUUID().toString();
-        clave = "1234";
-        fecha = LocalDateTime.now();
+        id = Long.getLong(UUID.randomUUID().toString()) ;
+        documento = "1234";
+        nombres = "Leo";
+        apellidos = "Leo";
+        celular = "Leo";
+        email = "Leo";
+        fechaNacimiento = LocalDate.now();
+        password = "Leo";
     }
 
     public ComandoUsuarioTestDataBuilder conNombre(String nombre) {
-        this.nombre = nombre;
+        this.nombres = nombre;
         return this;
     }
 
     public ComandoUsuario build() {
-        return new ComandoUsuario(id,nombre, clave,fecha);
+        return new ComandoUsuario(id,documento, nombres, apellidos, celular, email, fechaNacimiento, password);
     }
 }

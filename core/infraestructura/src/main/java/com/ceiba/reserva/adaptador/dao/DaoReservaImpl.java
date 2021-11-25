@@ -21,6 +21,9 @@ class DaoReservaImpl implements DaoReserva {
     @SqlStatement(namespace= "reserva", value="listarPorEscenarioId")
     private static String sqlListarPorEscenarioId;
 
+    @SqlStatement(namespace= "reserva", value="listarPorUsuarioId")
+    private static String sqlListarPorUsuarioId;
+
     @SqlStatement(namespace= "reserva", value="listarPorFechaAndEscenarioId")
     private static String sqlListarPorFechaAndEscenarioId;
 
@@ -46,6 +49,13 @@ class DaoReservaImpl implements DaoReserva {
         paramSource.addValue("id", id);
         paramSource.addValue("fecha", fecha);
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListarPorFechaAndEscenarioId,paramSource,  new MapeoReserva());
+    }
+
+    @Override
+    public List<DtoReserva> listarPorUsuarioId(Long id) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id", id);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListarPorUsuarioId,paramSource,  new MapeoReserva());
     }
 
 

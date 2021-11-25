@@ -14,7 +14,7 @@ dependencies {
 	implementation project(':dominio')
 	implementation project(':comun:comun-aplicacion')
 	implementation project.ext.springtxt
-
+	implementation project.ext.sprintdatacommons
 	compileOnly project.ext.lombok
 	annotationProcessor project.ext.lombok
 }

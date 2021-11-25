@@ -5,9 +5,12 @@ import com.ceiba.escenario.consulta.ManejadorListarEscenariosPorNombre;
 import com.ceiba.escenario.modelo.dto.DtoEscenario;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/escenarios")
@@ -24,8 +27,9 @@ public class ConsultaControladorEscenario {
 
     @GetMapping
     @ApiOperation("Listar escenarios")
-    public List<DtoEscenario> listar() {
-        return this.manejadorListarEscenarios.ejecutar();
+    public Page<DtoEscenario> listar(@RequestParam Optional<Integer> limit, @RequestParam Optional<Integer> offSet) {
+        PageRequest pageable = PageRequest.of( offSet.get(), limit.get());
+        return this.manejadorListarEscenarios.ejecutar(pageable);
     }
 
     @GetMapping("/buscar/{filter}")

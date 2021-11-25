@@ -3,6 +3,7 @@ package com.ceiba.reserva.controlador;
 import com.ceiba.reserva.consulta.ManejadorListarReservas;
 import com.ceiba.reserva.consulta.ManejadorListarReservasPorFechaAndIdEscenario;
 import com.ceiba.reserva.consulta.ManejadorListarReservasPorIdEscenario;
+import com.ceiba.reserva.consulta.ManejadorListarReservasPorIdUsuario;
 import com.ceiba.reserva.modelo.dto.DtoReserva;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -21,14 +22,17 @@ public class ConsultaControladorReserva {
     private final ManejadorListarReservas manejadorListarReservas;
     private final ManejadorListarReservasPorIdEscenario manejadorListarReservasPorIdEscenario;
     private final ManejadorListarReservasPorFechaAndIdEscenario manejadorListarReservasPorFechaAndIdEscenario;
+    private final ManejadorListarReservasPorIdUsuario manejadorListarReservasPorIdUsuario;
 
 
     public ConsultaControladorReserva(ManejadorListarReservasPorIdEscenario manejadorListarReservasPorIdEscenario,
                                       ManejadorListarReservas manejadorListarReservas,
-                                      ManejadorListarReservasPorFechaAndIdEscenario manejadorListarReservasPorFechaAndIdEscenario) {
+                                      ManejadorListarReservasPorFechaAndIdEscenario manejadorListarReservasPorFechaAndIdEscenario,
+                                      ManejadorListarReservasPorIdUsuario manejadorListarReservasPorIdUsuario) {
         this.manejadorListarReservasPorIdEscenario = manejadorListarReservasPorIdEscenario;
         this.manejadorListarReservas = manejadorListarReservas;
         this.manejadorListarReservasPorFechaAndIdEscenario = manejadorListarReservasPorFechaAndIdEscenario;
+        this.manejadorListarReservasPorIdUsuario = manejadorListarReservasPorIdUsuario;
     }
 
     @GetMapping
@@ -52,5 +56,12 @@ public class ConsultaControladorReserva {
     public List<DtoReserva> listarReservarPorEscenarioIdAndFecha(@PathVariable Long id, @DateTimeFormat(pattern="yyyy-MM-dd") @PathVariable Date fecha) {
         return this.manejadorListarReservasPorFechaAndIdEscenario.ejecutar(id, fecha);
     }
+
+    @GetMapping("/usuario/{id}")
+    @ApiOperation("Listar reservas por usuario id")
+    public List<DtoReserva> listarReservarPorUsuarioId(@PathVariable Long id) {
+        return this.manejadorListarReservasPorIdUsuario.ejecutar(id);
+    }
+
 
 }

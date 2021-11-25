@@ -24,6 +24,7 @@ repositories {
 }
 
 dependencies {
+	implementation project.ext.sprintdatacommons
 	testImplementation project.ext.springboottest
 	testImplementation project.ext.mockitocore
 	testImplementation project.ext.mockitoinline

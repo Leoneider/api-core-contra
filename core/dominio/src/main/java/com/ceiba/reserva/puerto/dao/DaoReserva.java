@@ -14,7 +14,7 @@ public interface DaoReserva {
     List<DtoReserva> listar();
     List<DtoReserva> listarPorEscenarioId(Long id);
     List<DtoReserva> listarPorFechaAndEscenarioId(Long id, Date fecha);
-
+    List<DtoReserva> listarPorUsuarioId(Long id);
 
 
 }
