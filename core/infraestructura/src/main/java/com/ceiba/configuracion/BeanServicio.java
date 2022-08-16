@@ -34,8 +34,6 @@ public class BeanServicio {
         return new ServicioActualizarUsuario(repositorioUsuario);
     }
 
-
-
     @Bean
     public ServicioCrearEscenario servicioCrearEscenario(RepositorioEscenario repositorioEscenario) {
         return new ServicioCrearEscenario(repositorioEscenario);
@@ -50,8 +48,6 @@ public class BeanServicio {
     public ServicioActualizarEscenario servicioActualizarEscenario(RepositorioEscenario repositorioEscenario) {
         return new ServicioActualizarEscenario(repositorioEscenario);
     }
-
-
 
     @Bean
     public ServicioCrearReserva servicioCrearReserva(RepositorioReserva repositorioReserva) {
